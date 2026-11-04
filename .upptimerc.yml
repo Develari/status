@@ -1,0 +1,106 @@
+# Mobiari status page. Upptime: GitHub Actions checks every 5 minutes, incidents are
+# GitHub issues, the site is published to GitHub Pages at status.mobiari.com.
+# Docs: https://upptime.js.org/docs/configuration
+owner: Develari
+repo: status
+user-agent: Develari
+
+# Nothing here needs a secret; an empty list disables secret substitution.
+secrets: []
+
+assignees:
+  - ari-rocha
+
+sites:
+  - name: API
+    slug: api
+    # Measured from Sao Paulo through Globalping: the GitHub runners are in the US, which
+    # added 300-500 ms of distance to every number on the page.
+    type: globalping
+    location: sao paulo
+    # Readiness, not just liveness: it answers 503 when the database is down.
+    url: https://api.mobiari.com/health/ready
+    expectedStatusCodes:
+      - 200
+    maxResponseTime: 3000
+    __dangerous__body_down_if_text_missing: '"status":"ok"'
+  - name: Painel
+    slug: painel
+    type: globalping
+    location: sao paulo
+    url: https://app.mobiari.com
+    expectedStatusCodes:
+      - 200
+    maxResponseTime: 5000
+  - name: Site
+    slug: site
+    type: globalping
+    location: sao paulo
+    url: https://mobiari.com
+    expectedStatusCodes:
+      - 200
+    maxResponseTime: 5000
+
+status-website:
+  cname: status.mobiari.com
+  name: Status do Mobiari
+  logoUrl: https://mobiari.com/favicon.svg
+  faviconSvg: https://mobiari.com/favicon.svg
+  introTitle: "**Status do Mobiari**"
+  introMessage: Estado dos nossos serviços em tempo real. Quando há um incidente, ele aparece aqui e é atualizado até a resolução.
+  navbar:
+    - title: Status
+      href: /
+    - title: Mobiari
+      href: https://mobiari.com
+    - title: Central de ajuda
+      href: https://docs.mobiari.com
+
+i18n:
+  activeIncidents: Incidentes ativos
+  allSystemsOperational: Todos os sistemas estão operacionais
+  incidentReport: "Relatório do incidente #$NUMBER →"
+  activeIncidentSummary: Aberto em $DATE com $POSTS atualizações
+  incidentTitle: Detalhes do incidente $NUMBER
+  incidentDetails: Detalhes do incidente
+  incidentFixed: Resolvido
+  incidentOngoing: Em andamento
+  incidentOpenedAt: Aberto em
+  incidentClosedAt: Encerrado em
+  incidentViewOnGitHub: Ver e acompanhar no GitHub
+  incidentCommentSummary: Publicado em $DATE por $AUTHOR
+  incidentBack: ← Voltar para todos os incidentes
+  pastIncidents: Incidentes anteriores
+  pastIncidentsResolved: Resolvido em $MINUTES minutos com $POSTS atualizações
+  liveStatus: Status atual
+  overallUptime: "Disponibilidade geral: $UPTIME"
+  overallUptimeTitle: Disponibilidade geral
+  averageResponseTime: "Tempo médio de resposta: $TIMEms"
+  averageResponseTimeTitle: Resposta média
+  sevelDayResponseTime: Tempo de resposta em 7 dias
+  responseTimeMs: Tempo de resposta (ms)
+  up: No ar
+  down: Fora do ar
+  degraded: Lento
+  loading: Carregando
+  footer: Esta página é [código aberto]($REPO), feita com [Upptime](https://upptime.js.org)
+  errorTitle: Ocorreu um erro
+  errorIntro: Não foi possível obter o status mais recente.
+  errorText: Tente novamente em instantes.
+  errorHome: Ir para a página inicial
+  pastScheduledMaintenance: Manutenções anteriores
+  scheduledMaintenance: Manutenção programada
+  scheduledMaintenanceSummaryStarted: Iniciada em $DATE por $DURATION minutos
+  scheduledMaintenanceSummaryStarts: Começa em $DATE por $DURATION minutos
+  startedAt: Início
+  startsAt: Início
+  duration: Duração
+  durationMin: $DURATION minutos
+  incidentCompleted: Concluída
+  incidentScheduled: Agendada
+  duration24H: 24h
+  duration7D: 7d
+  duration30D: 30d
+  duration1Y: 1a
+  durationAll: tudo
+  locale: pt-BR
