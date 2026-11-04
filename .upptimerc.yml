@@ -59,6 +59,8 @@ status-website:
       --error-button-background-color: #2d5bff;
       --submit-button-border-color: #1b3fd6;
       --submit-button-background-color: #2d5bff;
+      /* The response-time charts are PNGs drawn in teal (hue 168); 59deg lands on the brand blue (hue 227). */
+      --graph-filter: hue-rotate(59deg);
     }
     .submit-button { background: #2d5bff; }
   introTitle: "**Status do Mobiari**"
