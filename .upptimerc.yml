@@ -46,15 +46,36 @@ status-website:
   name: Status do Mobiari
   logoUrl: https://mobiari.com/favicon.svg
   faviconSvg: https://mobiari.com/favicon.svg
-  # Mobiari blue (#2D5BFF, as on mobiari.com) for the page chrome. Up/down/degraded keep their
-  # green/red/yellow: those are signals, not branding.
+  # Mobiari blue (#2D5BFF, as on mobiari.com) for the page chrome, in both schemes: the theme
+  # follows the visitor's light/dark setting through two media-queried <link>s, so every surface
+  # colour is set for both (overriding only some leaves dark text on dark cards).
+  # Up/down/degraded keep their green/red/yellow from the theme: those are signals, not branding.
   css: |
-    :root {
-      --body-background-color: #f4f6fd;
-      --body-text-color: #0f1b3d;
-      --nav-border-bottom-color: #dce3f7;
-      --nav-current-border-bottom-color: #2d5bff;
-      --card-border-color: #dce3f7;
+    @media (prefers-color-scheme: light) {
+      html:root {
+        --body-background-color: #f4f6fd;
+        --body-text-color: #0f1b3d;
+        --card-background-color: #ffffff;
+        --nav-background-color: #ffffff;
+        --nav-border-bottom-color: #dce3f7;
+        --nav-current-border-bottom-color: #2d5bff;
+        --card-border-color: #dce3f7;
+        --tag-color: #ffffff;
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      html:root {
+        --body-background-color: #0b1020;
+        --body-text-color: #e8ecf8;
+        --card-background-color: #131b36;
+        --nav-background-color: #131b36;
+        --nav-border-bottom-color: #25305a;
+        --nav-current-border-bottom-color: #6f8cff;
+        --card-border-color: #25305a;
+        --tag-color: #0b1020;
+      }
+    }
+    html:root {
       --error-button-border-color: #1b3fd6;
       --error-button-background-color: #2d5bff;
       --submit-button-border-color: #1b3fd6;
