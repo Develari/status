@@ -46,6 +46,21 @@ status-website:
   name: Status do Mobiari
   logoUrl: https://mobiari.com/favicon.svg
   faviconSvg: https://mobiari.com/favicon.svg
+  # Mobiari blue (#2D5BFF, as on mobiari.com) for the page chrome. Up/down/degraded keep their
+  # green/red/yellow: those are signals, not branding.
+  css: |
+    :root {
+      --body-background-color: #f4f6fd;
+      --body-text-color: #0f1b3d;
+      --nav-border-bottom-color: #dce3f7;
+      --nav-current-border-bottom-color: #2d5bff;
+      --card-border-color: #dce3f7;
+      --error-button-border-color: #1b3fd6;
+      --error-button-background-color: #2d5bff;
+      --submit-button-border-color: #1b3fd6;
+      --submit-button-background-color: #2d5bff;
+    }
+    .submit-button { background: #2d5bff; }
   introTitle: "**Status do Mobiari**"
   introMessage: Estado dos nossos serviços em tempo real. Quando há um incidente, ele aparece aqui e é atualizado até a resolução.
   navbar:
@@ -83,7 +98,7 @@ i18n:
   down: Fora do ar
   degraded: Lento
   loading: Carregando
-  footer: Esta página é [código aberto]($REPO), feita com [Upptime](https://upptime.js.org)
+  footer: "Mobiari. Dúvidas? [Fale com a gente](https://mobiari.com/#contato) ou veja a [Central de ajuda](https://docs.mobiari.com)."
   errorTitle: Ocorreu um erro
   errorIntro: Não foi possível obter o status mais recente.
   errorText: Tente novamente em instantes.
